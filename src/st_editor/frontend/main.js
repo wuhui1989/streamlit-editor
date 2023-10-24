@@ -18,21 +18,20 @@ function sendValue(value) {
     // Grab the label and default value that the user specified
 
 
-
     // Set the default value to be what the user specified
-    const input = document.getElementById("editor");
+    const editorDom = document.getElementById("editor").getElementsByClassName('ql-editor')[0];
+    const {innerHtml} = event.detail.args
 
-
-   const editorDom = document.getElementById("editor")?.getElementsByClassName('ql-editor')[0];
-    
-
+    if(innerHtml){
+      editorDom.innerHTML = innerHtml
+    }
 
     // On the keyup event, send the new value to Python
-    input.onkeyup = event => sendValue(editorDom.innerHTML)
+    editorDom.onkeyup = event => sendValue(editorDom.innerHTML)
 
     window.rendered = true
   }
-  Streamlit.setFrameHeight(300)
+  Streamlit.setFrameHeight(260)
 }
 
 
@@ -41,4 +40,4 @@ Streamlit.events.addEventListener(Streamlit.RENDER_EVENT, onRender)
 // Tell Streamlit that the component is ready to receive events
 Streamlit.setComponentReady()
 // Render with the correct height, if this is a fixed-height component
-Streamlit.setFrameHeight(100)
+Streamlit.setFrameHeight(260)
