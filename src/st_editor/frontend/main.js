@@ -14,13 +14,15 @@ function sendValue(value) {
  */
  function onRender(event) {
   // Only run the render code the first time the component is loaded.
+  const {innerHtml,height} = event.detail.args
   if (!window.rendered) {
     // Grab the label and default value that the user specified
 
 
     // Set the default value to be what the user specified
     const editorDom = document.getElementById("editor").getElementsByClassName('ql-editor')[0];
-    const {innerHtml} = event.detail.args
+
+    document.getElementById("editor").style.height = height - 10 + "px"
 
     if(innerHtml){
       editorDom.innerHTML = innerHtml
@@ -31,7 +33,7 @@ function sendValue(value) {
 
     window.rendered = true
   }
-  Streamlit.setFrameHeight(260)
+  Streamlit.setFrameHeight(height)
 }
 
 

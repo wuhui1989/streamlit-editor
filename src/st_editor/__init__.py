@@ -14,21 +14,23 @@ _component_func = components.declare_component(
 # Create the python function that will be called
 def st_editor(
     key: Optional[str] = None,
-    innerHtml = ''
+    innerHtml = '',
+    height = 260
 ):
     """
     Add a descriptive docstring
     """
     component_value = _component_func(
         key=key,
-        innerHtml = innerHtml
+        innerHtml = innerHtml,
+        height = height
     )
 
     return component_value
 
 
 def main():
-    value = st_editor(innerHtml="")
+    value = st_editor(innerHtml="",height=160)
 
     st.write(value)
 
